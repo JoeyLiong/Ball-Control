@@ -17,6 +17,19 @@ void draw() {
 background(219,255,254);
 fill(252,224,201);
 
+
+//Coded Keys
+ if (key == CODED) { 
+    if (keyCode == UP) {
+      y = 20;
+    } else if (keyCode == DOWN) {
+      y = 50;
+    }
+  } else {
+    y = 35;
+  }
+
+//Event flow
 if (frame > 120) { 
     noLoop(); 
     background(0); 
@@ -27,6 +40,7 @@ if (frame > 120) {
     frame++;
   }
 
+//Mouse Data
   float z = mouseX;
   float w = mouseY;
   float ix = width - mouseX; // Inverse X
@@ -44,7 +58,8 @@ float targetX = mouseX;
   float targetY = mouseY;
   float dy = targetY - y;
   y += dy * easing;
-  
+ 
+ //Cursor Icon 
    if (mousePressed == true) {
     cursor(HAND); 
   } else {
@@ -53,6 +68,8 @@ float targetX = mouseX;
   line(mouseX, 0, mouseX, height);
   line(0, mouseY, height, mouseY);
   
+  
+  //Body
   ellipse(x, y, 66, 66);
 ellipseMode(CENTER);
 ellipse(100,100,120,100);
@@ -63,7 +80,6 @@ fill(67,106,245);
 rectMode(CENTER);
 rect(101,170,40,40);
 
-//
 
 fill(252,224,201);
 rectMode(CENTER);
@@ -80,6 +96,8 @@ frameRate(24);
   println(mouseX + " : " + mouseY);
 }
 
+
+//Keyboard Data
 void mousePressed() {
   
   loop();
