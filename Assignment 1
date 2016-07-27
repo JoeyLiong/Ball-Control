@@ -1,0 +1,104 @@
+float x;
+float y;
+float z;
+float w;
+int dragX, dragY;
+int moveX,moveY;
+int frame = 0;
+float easing = 0.05;
+
+void setup() {
+size(200,200);
+noStroke();
+
+}
+
+void draw() {
+background(219,255,254);
+fill(252,224,201);
+
+if (frame > 120) { 
+    noLoop(); 
+    background(0); 
+  } else { 
+    background(204); 
+    line(mouseX, 0, mouseX, 100); 
+    line(0, mouseY, 100, mouseY);
+    frame++;
+  }
+
+  float z = mouseX;
+  float w = mouseY;
+  float ix = width - mouseX; // Inverse X
+  float iy = height - mouseY; // Inverse Y
+  background(126);
+  fill(255, 150);
+  ellipse(z, height/2, w, w);
+  fill(0, 159);
+  ellipse(ix, height/2, iy, iy);
+
+float targetX = mouseX;
+  float dx = targetX - x;
+  x += dx * easing;
+  
+  float targetY = mouseY;
+  float dy = targetY - y;
+  y += dy * easing;
+  
+   if (mousePressed == true) {
+    cursor(HAND); 
+  } else {
+    cursor(CROSS);
+  }
+  line(mouseX, 0, mouseX, height);
+  line(0, mouseY, height, mouseY);
+  
+  ellipse(x, y, 66, 66);
+ellipseMode(CENTER);
+ellipse(100,100,120,100);
+
+
+stroke(8);
+fill(67,106,245);
+rectMode(CENTER);
+rect(101,170,40,40);
+
+//
+
+fill(252,224,201);
+rectMode(CENTER);
+rect(80,170,10,20);
+
+fill(252,224,201);
+rectMode(CENTER);
+rect(120,170,10,20);
+
+line(90,200,90,190);
+line(110,200,110,190);
+
+frameRate(24);
+  println(mouseX + " : " + mouseY);
+}
+
+void mousePressed() {
+  
+  loop();
+  frame = 0;
+  
+  fill(255,18,18);
+  rectMode(CENTER);
+  rect(101,150,20,40);
+  
+  fill(0);
+ellipseMode(CENTER);
+ellipse(70,90,30,30);
+
+fill(0);
+ellipseMode(CENTER);
+ellipse(130,90,30,30);
+
+}
+
+void keyPressed() {
+  background(155,179,240) ;
+}
